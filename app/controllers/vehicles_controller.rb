@@ -2,7 +2,13 @@ class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vehicles = Vehicle.all
+    @search_term = params[:q]
+    if @search_term.nil?
+      @vehicles = Vehicle.all
+    else
+      regex = Regexp.new(@search_term, "i")
+      @vehicles = Vehicle.select { |vehicle| vehicle.address.match(regex) }
+    end
   end
 
   def show
