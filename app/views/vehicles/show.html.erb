@@ -1,2 +1,21 @@
-<h1>Vehicles#show</h1>
-<p>Find me in app/views/vehicles/show.html.erb</p>
+<div class="container">
+  <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
+    <div class="card-trip-infos">
+      <div>
+        <h1><%= @vehicle.name %></h1>
+        <p>Address: <%= @vehicle.address %></p>
+        <p>Berth: (<%= @vehicle.berths %>)</p>
+      </div>
+      <h2 class="card-trip-pricing"><%= @vehicle.price_per_night %></h2>
+      <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
+      <p>Category: <%= @vehicle.category %></p>
+      <p>Description: <%= @vehicle.description %></p>
+    </div>
+  </div>
+    <div class="container">
+      <%= link_to "Back", vehicles_path, class: "btn btn-primary" %>
+    </div>
+</div>
+
+
