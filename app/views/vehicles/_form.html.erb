@@ -1,10 +1,12 @@
-<div class="container">
-  <%= simple_form_for @vehicle do |f| %>
+<div class="container mb-3">
+  <%= simple_form_for [@user, @vehicle] do |f| %>
     <%= f.input :name %>
     <%= f.input :berths %>
     <%= f.input :address %>
     <%= f.input :price_per_night %>
     <%= f.input :category %>
     <%= f.input :description %>
-    <%= f.submit "add a review", class: "btn btn-primary" %>
-  <% end %></div>
+    <%= f.submit "Add Vehicle", class: "btn btn-primary" %>
+ <% end %>
+
+</div>
