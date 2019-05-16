@@ -1,6 +1,6 @@
 <h1>New Booking</h1>
 
-<%= simple_form_for @booking do |f| %>
+<%= simple_form_for [@vehicle, @booking] do |f| %>
         <%= f.input :start_date, label:'Start date' %>
         <%= f.input :number_of_nights, label:'Number of nights' %>
         <%= f.button :submit, "Create!", class: "form-button" %>
