@@ -1,11 +1,9 @@
 <h1>Bookings.YEAAHHH</h1>
 <ul>
-<%= @bookings.each do |booking| %>
-  <li>
-    <%= booking.vehicle %>
-    <%= booking.start_date %>
-    <%= booking.number_of_nights %>
-    <%= booking.vehicle.price_per_night %>
-  </li>
+<% @bookings.each do |booking| %>
+  <li><%= booking.vehicle.name %> </li>
+  <li><%= booking.start_date %></li>
+  <li><%= booking.number_of_nights %></li>
+  <li><%= booking.vehicle.price_per_night %></li>
   <% end %>
 </ul>
