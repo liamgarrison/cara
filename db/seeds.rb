@@ -19,7 +19,7 @@ end
     name: Faker::Name.first_name,
     address: Faker::Address.full_address,
     berths: (1..5).to_a.sample,
-    description: Faker::Lorem.sentences(10),
+    description: Faker::Lorem.sentences(10).join(" "),
     price_per_night: (10..50).to_a.sample,
     category: ["Campervan", "Caravan", "Trailer Tent", "Motorhome"].sample
   })
