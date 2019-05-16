@@ -1,3 +1,4 @@
+
 Booking.destroy_all
 Vehicle.destroy_all
 User.destroy_all
