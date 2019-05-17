@@ -6,6 +6,8 @@
     <%= f.input :price_per_night %>
     <%= f.input :category, collection: ["Campervan", "Caravan", "Trailer Tent", "Motorhome"] %>
     <%= f.input :description %>
+    <%= f.imput :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.submit "Add Vehicle", class: "btn btn-primary" %>
  <% end %>
 
