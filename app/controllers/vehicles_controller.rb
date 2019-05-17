@@ -25,6 +25,7 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.owner = User.find(params[:user_id])
+    authorize @vehicle
     if @vehicle.save
       redirect_to vehicle_path(@vehicle)
     else
