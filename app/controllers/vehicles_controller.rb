@@ -13,6 +13,14 @@ class VehiclesController < ApplicationController
     else
       regex = Regexp.new(@search_term, "i")
       @vehicles = policy_scope(Vehicle).select { |vehicle| vehicle.address.match(regex) }
+      # @vehicles = Vehicle.where.not(latitude: nil, longitude: nil)
+      @vehicles = Vehicle.near(@search_term, 20)
+      @markers = @vehicles.map do |vehicle|
+      {
+        lat: vehicle.latitude,
+        lng: vehicle.longitude
+      }
+      end
     end
   end
 
@@ -65,4 +73,5 @@ class VehiclesController < ApplicationController
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])
   end
+
 end

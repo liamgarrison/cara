@@ -11,4 +11,6 @@ class Vehicle < ApplicationRecord
   validates :category, presence: true, inclusion: { in: ["Campervan", "Caravan", "Trailer Tent", "Motorhome"] }
   validates :description, presence: true, length: { in: 140..500 }
   validates :photo, presence: true
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
