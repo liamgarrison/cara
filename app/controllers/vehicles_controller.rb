@@ -4,7 +4,11 @@ class VehiclesController < ApplicationController
   def index
     @search_term = params[:q]
     if @search_term.nil?
-      @vehicles = Vehicle.all
+      if params[:user_id]
+        @vehicles = Vehicle.where(owner_id: params[:user_id])
+      else
+        @vehicles = Vehicle.all
+      end
     else
       regex = Regexp.new(@search_term, "i")
       @vehicles = Vehicle.select { |vehicle| vehicle.address.match(regex) }
