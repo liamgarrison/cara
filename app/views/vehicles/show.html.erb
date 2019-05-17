@@ -1,9 +1,8 @@
 <div class="container">
   <div class="card-trip">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
+    <%= cl_image_tag @vehicle.photo, crop: :fill %>
     <div class="card-trip-infos">
       <div>
-        <%= cl_image_tag @article.photo, height: 300, width: 400, crop: :fill %>
         <h1><%= @vehicle.name %></h1>
         <p>Address: <%= @vehicle.address %></p>
         <p>Berth: (<%= @vehicle.berths %>)</p>
