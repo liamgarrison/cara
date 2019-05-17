@@ -5,22 +5,24 @@ class VehiclesController < ApplicationController
     @search_term = params[:q]
     if @search_term.nil?
       if params[:user_id]
-        @vehicles = Vehicle.where(owner_id: params[:user_id])
+        @vehicles = policy_scope(Vehicle).where(owner_id: params[:user_id])
       else
-        @vehicles = Vehicle.all
+        @vehicles = policy_scope(Vehicle).all
       end
     else
       regex = Regexp.new(@search_term, "i")
-      @vehicles = Vehicle.select { |vehicle| vehicle.address.match(regex) }
+      @vehicles = policy_scope(Vehicle).select { |vehicle| vehicle.address.match(regex) }
     end
   end
 
   def show
+    authorize @vehicle
   end
 
   def new
     @vehicle = Vehicle.new
     @user = User.find(params[:user_id])
+    authorize @vehicle
   end
 
   def edit
@@ -28,7 +30,7 @@ class VehiclesController < ApplicationController
 
   def create
     @vehicle = Vehicle.new(vehicle_params)
-    @vehicle.owner = User.find(params[:user_id])
+    @vehicle.owner = current_user
     authorize @vehicle
     if @vehicle.save
       redirect_to vehicle_path(@vehicle)
@@ -39,6 +41,7 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update(vehicle_params)
+      authorize @vehicle
       redirect_to vehicle_path(@vehicle)
     else
       render :edit

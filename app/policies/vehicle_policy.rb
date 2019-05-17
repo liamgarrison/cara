@@ -7,5 +7,10 @@ class VehiclePolicy < ApplicationPolicy
     def create?
       true
     end
+
+    def update?
+      true
+    end
+
   end
 end
