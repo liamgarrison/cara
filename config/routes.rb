@@ -6,12 +6,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [] do
     resources :vehicles, only: [:index, :new, :create]
+    resources :bookings, only: [:index]
   end
 
   resources :vehicles, only: [:new, :create] do
     resources :bookings, only: [:new, :create]
   end
-
-  resources :bookings, only: [:show, :index]
+  resources :bookings, only: [:show]
 end
 
