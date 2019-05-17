@@ -1,0 +1,8 @@
+<div class="container mb-3">
+<%= simple_form_for [@vehicle, @booking] do |f| %>
+  <%= f.input :start_date, label:'Start date' %>
+  <%= f.input :number_of_nights, label:'Number of nights' %>
+  <%= f.button :submit, "Create!", class: "form-button" %>
+<% end %>
+
+</div>

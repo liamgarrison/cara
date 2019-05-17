@@ -24,6 +24,26 @@ class BookingsController < ApplicationController
     redirect_to booking_path(@booking)
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+    @vehicle = Vehicle.find(params[:vehicle_id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      redirect_to booking_path(@booking)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to user_bookings_path(current_user)
+  end
+
   private
 
   def booking_params
