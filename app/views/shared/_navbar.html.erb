@@ -15,6 +15,7 @@
             <%= link_to "Add Vehicle", new_user_vehicle_path(current_user), class: "dropdown-item" %>
             <%= link_to "My Vehicles", user_vehicles_path(current_user), class: "dropdown-item" %>
             <%= link_to "Manage Account", edit_user_registration_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Manage Bookings", user_bookings_path(current_user), class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

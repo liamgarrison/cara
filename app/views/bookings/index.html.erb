@@ -1,9 +1,23 @@
-<h1>Bookings.YEAAHHH</h1>
-<ul>
-<% @bookings.each do |booking| %>
-  <li><%= booking.vehicle.name %> </li>
-  <li><%= booking.start_date %></li>
-  <li><%= booking.number_of_nights %></li>
-  <li><%= booking.vehicle.price_per_night %></li>
-  <% end %>
-</ul>
+<div class="container">
+
+  <h1>My bookings</h1>
+  <ul>
+  <% @my_bookings.each do |booking| %>
+    <li><%= booking.vehicle.name %> </li>
+    <li><%= booking.start_date %></li>
+    <li><%= booking.number_of_nights %></li>
+    <li><%= booking.vehicle.price_per_night %></li>
+    <% end %>
+  </ul>
+
+  <h1>Bookings for my vehicles</h1>
+
+  <ul>
+  <% @their_bookings.each do |booking| %>
+    <li><%= booking.vehicle.name %> </li>
+    <li><%= booking.start_date %></li>
+    <li><%= booking.number_of_nights %></li>
+    <li><%= booking.vehicle.price_per_night %></li>
+    <% end %>
+  </ul>
+</div>

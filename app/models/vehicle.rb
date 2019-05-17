@@ -1,4 +1,5 @@
 class Vehicle < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   belongs_to :owner, class_name: "User"
   has_many :bookings
   has_many :renters, through: :bookings, source: :renter
@@ -9,4 +10,5 @@ class Vehicle < ApplicationRecord
   validates :address, presence: true
   validates :category, presence: true, inclusion: { in: ["Campervan", "Caravan", "Trailer Tent", "Motorhome"] }
   validates :description, presence: true, length: { in: 140..500 }
+  validates :photo, presence: true
 end

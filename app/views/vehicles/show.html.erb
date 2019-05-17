@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-trip">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
+    <%= cl_image_tag @vehicle.photo, crop: :fill %>
     <div class="card-trip-infos">
       <div>
         <h1><%= @vehicle.name %></h1>
@@ -16,6 +16,8 @@
     <div class="container">
       <%= link_to "Back", vehicles_path, class: "btn btn-primary" %>
     </div>
+    <%= link_to "Book Now", new_vehicle_booking_path(@vehicle) %>
+
 </div>
 
 

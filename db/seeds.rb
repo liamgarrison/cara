@@ -21,7 +21,8 @@ end
     berths: (1..5).to_a.sample,
     description: Faker::Lorem.sentences(10).join(" "),
     price_per_night: (10..50).to_a.sample,
-    category: ["Campervan", "Caravan", "Trailer Tent", "Motorhome"].sample
+    category: ["Campervan", "Caravan", "Trailer Tent", "Motorhome"].sample,
+    remote_photo_url: "https://images.unsplash.com/photo-1543395136-75b39bc00e0e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
   })
 end
 

@@ -1,6 +1,9 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    if params[:user_id]
+      @my_bookings = Booking.where(renter_id: params[:user_id])
+      @their_bookings = Booking.joins(:vehicle).merge(Vehicle.where(owner_id: params[:user_id]))
+    end
   end
 
   def show
