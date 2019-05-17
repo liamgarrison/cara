@@ -14,7 +14,11 @@ class VehiclePolicy < ApplicationPolicy
     end
 
     def update?
-      true
+      record.owner == user
+    end
+
+    def destroy?
+      record.owner == user
     end
 
 end

@@ -7,5 +7,7 @@
   <li><%= @booking.vehicle.price_per_night %></li>
 </ul>
 
- <%= link_to "Delete Booking", booking_path, method: :delete, class: "btn btn-primary" %>
- <%= link_to "Edit Booking", edit_vehicle_booking_path(@booking.vehicle) , class: "btn btn-primary" %>
+<% if policy(@booking).edit? %>
+  <%= link_to "Delete Booking", booking_path, method: :delete, class: "btn btn-primary" %>
+  <%= link_to "Edit Booking", edit_vehicle_booking_path(@booking.vehicle) , class: "btn btn-primary" %>
+<% end %>
