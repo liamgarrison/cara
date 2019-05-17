@@ -9,4 +9,16 @@
 </div>
 <div class="container mt-5">
   <h1>Featured Campervans</h1>
+  <ul>
+  <% @vehicles.each do |vehicle| %>
+    <%= cl_image_path vehicle.photo %>
+    <li> <%= vehicle.name %> </li>
+    <li><p> <%= vehicle.berths %> berth <%= vehicle.category %> </p> </li>
+    <li> <%= vehicle.address %> </li>
+    <li> <%= vehicle.price_per_night %> </li>
+    <li> <%= vehicle.category %> </li>
+    <li> <%= vehicle.name %> </li>
+
+  <% end %>
+  </ul>
 </div>
