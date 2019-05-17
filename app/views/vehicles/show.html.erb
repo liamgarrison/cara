@@ -8,7 +8,9 @@
         <p>Berth: (<%= @vehicle.berths %>)</p>
       </div>
       <h2 class="card-trip-pricing"><%= @vehicle.price_per_night %></h2>
-      <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
+      <div class="card-trip-user">
+        <%= cl_image_tag @vehicle.owner.photo, crop: :fill %>
+      </div>
       <p>Category: <%= @vehicle.category %></p>
       <p>Description: <%= @vehicle.description %></p>
     </div>
