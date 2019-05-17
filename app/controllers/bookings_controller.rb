@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   def index
     if params[:user_id]
-      @my_bookings = Booking.where(renter_id: params[:user_id])
-      @their_bookings = Booking.joins(:vehicle).merge(Vehicle.where(owner_id: params[:user_id]))
+      @my_bookings = policy_scope(Booking).where(renter_id: params[:user_id])
+      @their_bookings = policy_scope(Booking).joins(:vehicle).merge(Vehicle.where(owner_id: params[:user_id]))
     end
   end
 
@@ -30,11 +30,13 @@ class BookingsController < ApplicationController
   def edit
     @booking = Booking.find(params[:id])
     @vehicle = Vehicle.find(params[:vehicle_id])
+    authorize @booking
   end
 
   def update
     @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
+      authorize @booking
       redirect_to booking_path(@booking)
     else
       render :edit
@@ -44,6 +46,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
+    authorize @booking
     redirect_to user_bookings_path(current_user)
   end
 

@@ -16,4 +16,12 @@ class BookingPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def destroy?
+    record.renter == user
+  end
+
+  def update?
+    record.renter == user
+  end
 end
