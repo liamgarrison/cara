@@ -3,6 +3,11 @@ class VehiclePolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
+
+    def show?
+      true
+    end
 
     def create?
       true
@@ -12,5 +17,4 @@ class VehiclePolicy < ApplicationPolicy
       true
     end
 
-  end
 end

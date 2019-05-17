@@ -8,11 +8,13 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def new
     @booking = Booking.new
     @vehicle = Vehicle.find(params[:vehicle_id])
+    authorize @booking
   end
 
   def create
@@ -20,6 +22,7 @@ class BookingsController < ApplicationController
     @vehicle = Vehicle.find(params[:vehicle_id])
     @booking.vehicle = @vehicle
     @booking.renter = current_user
+    authorize @booking
     @booking.save
     redirect_to booking_path(@booking)
   end
