@@ -11,3 +11,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// TODO find better place for this. Brings algolia places autocomplete to the front
+.ap-dropdown-menu.ap-with-places {
+    z-index: 999999 !important;
+}

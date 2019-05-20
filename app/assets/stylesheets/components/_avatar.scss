@@ -1,6 +1,10 @@
 .avatar {
-  width: 40px;
+  background-image: asset_url('profile.svg');
+  background-color: white;
   border-radius: 50%;
+  object-fit: scale-down;
+  height: 40px;
+  width: 40px;
 }
 .avatar-large {
   width: 56px;
