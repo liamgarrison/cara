@@ -3,6 +3,9 @@ Booking.destroy_all
 Vehicle.destroy_all
 User.destroy_all
 
+# Realistic addresses
+addresses = %w[glasgow edinburgh newcastle birmingham manchester leeds bristol shoreditch vauxhall southampton]
+
 # User seeds
 10.times do
   User.create!({
@@ -14,11 +17,11 @@ User.destroy_all
   })
 end
 
-10.times do
+10.times do |index|
   Vehicle.create!({
     owner: User.all.sample,
     name: Faker::Name.first_name,
-    address: Faker::Address.full_address,
+    address: addresses[index],
     berths: (1..5).to_a.sample,
     description: Faker::Lorem.sentences(10).join(" "),
     price_per_night: (10..50).to_a.sample,

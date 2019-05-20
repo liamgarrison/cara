@@ -1,14 +1,20 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url(<%= image_path 'home_camper.jpg' %>);">
   <div class="container">
     <h1>Book unique campers and caravans for your next holiday</h1>
-      <form class="mt-5 w-50 form-inline" action="/vehicles">
-          <input class="form-control flex-grow-1" type="text" name="q" placeholder="Enter a location...">
-          <input class="ml-1 form-control btn btn-primary" type="submit" value="Search">
+      <form class="mt-5" action="/vehicles">
+        <div class="row">
+          <div class="col-8">
+            <input class="form-control" type="text" name="location" placeholder="Enter a location..." id="vehicle_address">
+          </div>
+          <div class="col-2">
+            <input class="form-control btn btn-primary" type="submit" value="Search">
+          </div>
+        </div>
       </form>
+    </div>
   </div>
 </div>
-
-<div class="container">
+<div class="container mt-5">
   <h1>Featured Campervans</h1>
   <div class="row">
     <% @vehicles.each do |vehicle| %>
