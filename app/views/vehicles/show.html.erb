@@ -1,24 +1,40 @@
-<div class="container">
-  <div class="card-trip">
+<div class="container border-radius">
+  <div class="top-image">
     <%= cl_image_tag @vehicle.photo, crop: :fill %>
-    <div class="m-3">
-      <h1 class="text-secondary"><%= @vehicle.name %></h1>
-      <p>Berth: (<%= @vehicle.berths %>) <%= @vehicle.category %></p>
-    </div>
-
-    <div class="card-trip-infos">
-      <h3 class="card-trip-user btn btn-primary">
-        <span class="price-from">From</span><br>£<%= @vehicle.price_per_night %> PN
-      </h3>
-    </div>
   </div>
+  <div class="content-container d-flex justify-content-between">
+    <div class="details-container w-50">
+      <div class="title-container d-flex justify-content-between">
+        <h1><%= @vehicle.name %></h1>
+          <%= cl_image_tag @vehicle.owner.photo, crop: :fill, height: 60, width: 60 %>
+      </div>
+      <div class="vehicle-fields">
+        <p><i class="fas fa-map-marker-alt"></i> <%= @vehicle.address %></p>
+        <div class="d-flex">
+          <p><i class="fas fa-shuttle-van"></i> <%= @vehicle.category %> </p>
+          <p> <i class="fas fa-bed"></i> <%= @vehicle.berths %></p>
+        </div>
+      </div>
+      <div class="description">
+        <p><%= @vehicle.description %></p>
+      </div>
+      <h2>Location</h2>
+      <div class="map">
+        <p>map will go here</p>
+      </div>
 
-  <div class="container text-center">
-      <%= link_to "Back", vehicles_path, class: "btn btn-primary" %>
-      <%= link_to "Book Now", new_vehicle_booking_path(@vehicle), class: "btn btn-primary"  %>
-      <% if policy(@vehicle).edit? %>
-      <%= link_to "Delete Vehicle", vehicle_path, method: :delete, class: "btn btn-primary image-responsive" %>
-      <%= link_to "Edit Vehicle", edit_vehicle_path, class: "btn btn-primary" %>
-      <% end %>
+    </div>
+    <div class="booking-container">
+      <div class="box-with-shadow border-radius sticky-top">
+          <div class="price d-flex">
+            <h4><strong>£<%= @vehicle.price_per_night %></strong></h4>
+            <p> per night</p>
+          </div>
+          <div class="dates">
+            <p> date picker </p>
+          </div>
+          <button>Book</button>
+        </div>
+      </div>
   </div>
 </div>
