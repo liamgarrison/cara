@@ -6,19 +6,19 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$body-bg:                 $white;
 $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    #476AE9;
+$primary:    $blue;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
+$border-radius:    4px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
@@ -29,3 +29,4 @@ $navbar-default-color: #ffffff;
 $navbar-default-link-color: #ffffff;
 $navbar-default-link-active-color: #ffffff;
 
+$box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);

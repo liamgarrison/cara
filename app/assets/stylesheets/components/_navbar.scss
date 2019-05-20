@@ -1,31 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 
-// .navbar-lewagon .navbar-collapse {
-//   flex-grow: 0;
-// }
-
-// .navbar-lewagon .navbar-brand img {
-//   width: 40px;
-// }
-
-.navbar-cara {
-  justify-content: space-between;
+// Need it t have fixed height for vehicles index page to work
+.navbar {
+  height: 80px;
 }
 
 .navbar-brand {
   font-family: 'Pacifico', cursive;
   font-size: 40px;
+  line-height: 40px;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-
-.nav-avatar img {
-  background-color: gray;
+.nav-avatar {
   height: 40px;
   width: 40px;
-  border-radius: 50px;
+  cursor: pointer;
 }
 
 .dropdown-toggle::after {

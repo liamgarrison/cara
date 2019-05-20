@@ -1,8 +1,21 @@
-.map-wrapper {
-  height: 100vh;
-  position: sticky-top;
+.search-filter-buttons {
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
-h1 {
-  color: blue;
+.vehicles-index-wrapper {
+  height: calc(100vh - 150px);
+  display: flex;
+}
+
+.cards-wrapper {
+  width:50%;
+  height: 100%;
+  overflow: auto;
+}
+
+.map-wrapper {
+  width:50%;
+  height: 100%;
 }
