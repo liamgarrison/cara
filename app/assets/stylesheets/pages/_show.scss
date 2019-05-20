@@ -21,10 +21,21 @@ body {
 }
 
 .box-with-shadow {
+  box-shadow: $box-shadow;
   background: white;
   padding: 16px;
+  width: 300px;
 }
 
 .description {
   margin: 32px 0px;
+}
+
+.price {
+  padding-bottom: 8px;
+  border-bottom: 1px;
+  border: light-gray;
+  h4 {
+    padding-right: 8px;
+  }
 }
