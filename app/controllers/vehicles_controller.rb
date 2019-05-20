@@ -3,8 +3,8 @@ class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @search_term = params[:q]
-    if @search_term.nil?
+    @search_term = params[:location]
+    if @search_term.nil? || @search_term == ""
       if params[:user_id]
         @vehicles = policy_scope(Vehicle).where(owner_id: params[:user_id])
       else
@@ -12,9 +12,9 @@ class VehiclesController < ApplicationController
       end
     else
       regex = Regexp.new(@search_term, "i")
-      @vehicles = policy_scope(Vehicle).select { |vehicle| vehicle.address.match(regex) }
+      # @vehicles = policy_scope(Vehicle).select { |vehicle| vehicle.address.match(regex) }
       # @vehicles = Vehicle.where.not(latitude: nil, longitude: nil)
-      @vehicles = Vehicle.near(@search_term, 20)
+      @vehicles = policy_scope(Vehicle).near(@search_term, 20)
       @markers = @vehicles.map do |vehicle|
       {
         lat: vehicle.latitude,
