@@ -1,24 +1,34 @@
-<div class="container">
+<div class="container mt-5">
 
   <h1>My bookings</h1>
-  <ul>
-  <% @my_bookings.each do |booking| %>
-    <li><%= booking.vehicle.name %> </li>
-    <li><%= booking.start_date %></li>
-    <li><%= booking.number_of_nights %></li>
-    <li><%= booking.vehicle.price_per_night %></li>
-    <li><%= link_to "view", booking_path(booking) %></li>
+
+  <div class="cards-wrapper w-50 p-3">
+    <% @my_bookings.each do |booking| %>
+      <div class="vehicle-index-card mb-3 w-100">
+        <%= cl_image_tag booking.vehicle.photo, height: 300 %>
+        <div class="vehicle-index-card-content d-flex flex-column p-3">
+          <p class="vehicle-index-card-title mb-2"><%= booking.vehicle.name %></p>
+          <p class="vehicle-index-card-subheading"><%= booking.vehicle.berths %> berth <%= booking.vehicle.category %></p>
+          <p class="vehicle-index-card-text flex-grow-1"><%= booking.vehicle.description[0..140] %></p>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
+
+  <!--  -->
 
   <h1>Bookings for my vehicles</h1>
 
-  <ul>
-  <% @their_bookings.each do |booking| %>
-    <li><%= booking.vehicle.name %> </li>
-    <li><%= booking.start_date %></li>
-    <li><%= booking.number_of_nights %></li>
-    <li><%= booking.vehicle.price_per_night %></li>
+  <div class="cards-wrapper w-50 p-3">
+    <% @their_bookings.each do |booking| %>
+      <div class="vehicle-index-card mb-3 w-100">
+        <%= cl_image_tag booking.vehicle.photo, height: 300 %>
+        <div class="vehicle-index-card-content d-flex flex-column p-3">
+          <p class="vehicle-index-card-title mb-2"> <strong><%= booking.vehicle.name %></strong></p>
+          <p class="booking-index-card-subheading">Lead renter's name: <%= booking.renter.first_name %> <%= booking.renter.last_name %></p>
+          <p class="booking-index-card-text flex-grow-1">From the <%= booking.start_date %> for <%= booking.number_of_nights%> nights </p>
+          <p class="booking-index-card-text flex-grow-1">Price Per Night: £<%= booking.vehicle.price_per_night %> </p>
+        </div>
+      </div>
     <% end %>
-  </ul>
-</div>
+  </div>
