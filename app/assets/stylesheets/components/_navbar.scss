@@ -17,10 +17,17 @@
   font-size: 40px;
 }
 
-// .nav-item .nav-link a {
-//   color: white !important;
-// }
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
 
-// #nblogo {
-//   color:white;
-// }
+.nav-avatar img {
+  background-color: gray;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+}
+
+.dropdown-toggle::after {
+    display:none;
+}

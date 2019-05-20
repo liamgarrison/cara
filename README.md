@@ -1,1 +1,5 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+# Cara
+
+A website for people to rent campervans.
+
+Live version can be found [here](http://cara-campers.herokuapp.com/)

@@ -3,24 +3,19 @@ class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @search_term = params[:q]
-    if @search_term.nil?
-      if params[:user_id]
-        @vehicles = policy_scope(Vehicle).where(owner_id: params[:user_id])
-      else
-        @vehicles = policy_scope(Vehicle).all
-      end
+    # Call private method for search params
+    @search_params = search_params
+    if params[:user_id]
+      # Admin vehicles page
+      @vehicles = policy_scope(Vehicle).where(owner_id: params[:user_id])
+    elsif @search_params[:location].nil? || @search_params[:location] == ""
+      # Show all vehicles if no search term
+      @vehicles = policy_scope(Vehicle).all
+      @markers = generate_markers(@vehicles)
     else
-      regex = Regexp.new(@search_term, "i")
-      @vehicles = policy_scope(Vehicle).select { |vehicle| vehicle.address.match(regex) }
-      # @vehicles = Vehicle.where.not(latitude: nil, longitude: nil)
-      @vehicles = Vehicle.near(@search_term, 20)
-      @markers = @vehicles.map do |vehicle|
-      {
-        lat: vehicle.latitude,
-        lng: vehicle.longitude
-      }
-      end
+      # Search vehicles page with location
+      @vehicles = policy_scope(Vehicle).near(@search_params[:location], search_params[:distance])
+      @markers = generate_markers(@vehicles)
     end
   end
 
@@ -70,8 +65,25 @@ class VehiclesController < ApplicationController
     params.require(:vehicle).permit(:name, :berths, :address, :price_per_night, :category, :description, :photo)
   end
 
+  def search_params
+    search_params = {}
+    search_params[:location] = params[:location]
+    search_params[:dates] = [params[:start_date], params[:end_date]]
+    search_params[:berths] = params[:berths]
+    search_params[:vehicle_type] = params["vehicle-type"]
+    search_params[:distance] = params[:distance]
+    search_params[:price_per_night] = params["price-per-night"]
+    search_params[:distance] = 100 if search_params[:distance].nil?
+    return search_params
+  end
+
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])
   end
 
+  def generate_markers(vehicles)
+    vehicles.map do |vehicle|
+      { lat: vehicle.latitude, lng: vehicle.longitude }
+    end
+  end
 end

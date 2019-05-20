@@ -1,24 +1,39 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url(<%= image_path 'home_camper.jpg' %>);">
   <div class="container">
     <h1>Book unique campers and caravans for your next holiday</h1>
-      <form class="mt-5 w-50 form-inline" action="/vehicles">
-          <input class="form-control flex-grow-1" type="text" name="q" placeholder="Enter a location...">
-          <input class="ml-1 form-control btn btn-primary" type="submit" value="Search">
+      <form class="mt-5" action="/vehicles">
+        <div class="row">
+          <div class="col-8">
+            <input class="form-control" type="text" name="location" placeholder="Enter a location..." id="vehicle_address">
+          </div>
+          <div class="col-2">
+            <input class="form-control btn btn-primary" type="submit" value="Search">
+          </div>
+        </div>
       </form>
+    </div>
   </div>
 </div>
 <div class="container mt-5">
   <h1>Featured Campervans</h1>
-  <ul>
-  <% @vehicles.each do |vehicle| %>
-    <%= cl_image_path vehicle.photo %>
-    <li> <%= vehicle.name %> </li>
-    <li><p> <%= vehicle.berths %> berth <%= vehicle.category %> </p> </li>
-    <li> <%= vehicle.address %> </li>
-    <li> <%= vehicle.price_per_night %> </li>
-    <li> <%= vehicle.category %> </li>
-    <li> <%= vehicle.name %> </li>
+  <div class="row">
+    <% @vehicles.each do |vehicle| %>
+    <div class="col-4">
+      <div class="card-trip">
+        <%= cl_image_tag vehicle.photo, crop: :fill %>
+        <div class="m-3">
+          <h1 class="text-secondary"><%= vehicle.name %></h1>
+          <p>Berth: (<%= vehicle.berths %>) <%= vehicle.category %></p>
+        </div>
 
-  <% end %>
-  </ul>
+        <div class="card-trip-infos">
+          <h3 class="card-trip-user btn btn-primary">
+            <span class="price-from">From</span><br>£<%= vehicle.price_per_night %> PN
+          </h3>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
+
