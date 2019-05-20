@@ -9,7 +9,7 @@
             <p class="vehicle-index-card-title mb-2"><%= vehicle.name %></p>
             <p class="vehicle-index-card-subheading"><%= vehicle.berths %> berth <%= vehicle.category %></p>
             <p class="vehicle-index-card-text flex-grow-1"><%= vehicle.description[0..140] %></p>
-            <p class="vehicle-index-card-address mb-0"><i class="fas fa-map-marker-alt"></i> <%= vehicle[:distance].round %> miles away</p>
+            <p class="vehicle-index-card-address mb-0"><i class="fas fa-map-marker-alt"></i> <%= vehicle[:distance] ? vehicle[:distance].round : 0 %> miles away</p>
           </div>
         </div>
       <% end %>
