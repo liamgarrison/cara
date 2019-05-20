@@ -2,7 +2,6 @@ class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-
   def index
     @search_term = params[:location]
     if params[:user_id]
