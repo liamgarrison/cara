@@ -18,9 +18,13 @@
       <div class="description">
         <p><%= @vehicle.description %></p>
       </div>
-      <h2>Location</h2>
-      <div class="map">
-        <p>map will go here</p>
+      <h2 class="mb-5">Location</h2>
+      <div
+        id="map"
+        style="width: 100%;
+        height: 500px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
 
     </div>

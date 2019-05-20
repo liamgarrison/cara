@@ -26,6 +26,7 @@ class VehiclesController < ApplicationController
 
   def show
     authorize @vehicle
+    @markers = [{ lat: @vehicle.latitude, lng: @vehicle.longitude }]
   end
 
   def new
