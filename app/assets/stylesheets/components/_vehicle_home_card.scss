@@ -1,0 +1,32 @@
+.vehicle-home-card {
+  width: 100%;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+}
+
+.vehicle-home-card img {
+  height: 200px;
+  width:100%;
+  object-fit: cover;
+}
+
+.vehicle-home-card-content {
+  height: 150px;
+}
+
+.vehicle-home-card-title {
+  font-weight: bold;
+  font-size: 24px;
+  color: $gray;
+}
+
+.vehicle-home-card-subheading {
+  font-size: 14px;
+  color: $light-gray;
+}
+
+.vehicle-home-card-address {
+  font-size: 14px;
+  color: $light-gray;
+  text-align: right;
+}
