@@ -1,28 +1,24 @@
 <div class="container">
   <div class="card-trip">
     <%= cl_image_tag @vehicle.photo, crop: :fill %>
+    <div class="m-3">
+      <h1 class="text-secondary"><%= @vehicle.name %></h1>
+      <p>Berth: (<%= @vehicle.berths %>) <%= @vehicle.category %></p>
+    </div>
+
     <div class="card-trip-infos">
-      <div>
-        <h1><%= @vehicle.name %></h1>
-        <p>Address: <%= @vehicle.address %></p>
-        <p>Berth: (<%= @vehicle.berths %>)</p>
-      </div>
-      <h2 class="card-trip-pricing"><%= @vehicle.price_per_night %></h2>
-      <div class="card-trip-user">
-        <%= cl_image_tag @vehicle.owner.photo, crop: :fill %>
-      </div>
-      <p>Category: <%= @vehicle.category %></p>
-      <p>Description: <%= @vehicle.description %></p>
+      <h3 class="card-trip-user btn btn-primary">
+        <span class="price-from">From</span><br>£<%= @vehicle.price_per_night %> PN
+      </h3>
     </div>
   </div>
-    <div class="container">
+
+  <div class="container text-center">
       <%= link_to "Back", vehicles_path, class: "btn btn-primary" %>
-    </div>
-    <%= link_to "Book Now", new_vehicle_booking_path(@vehicle) %>
-    <% if policy(@vehicle).edit? %>
-      <%= link_to "Delete Vehicle", vehicle_path, method: :delete, class: "btn btn-primary" %>
+      <%= link_to "Book Now", new_vehicle_booking_path(@vehicle), class: "btn btn-primary"  %>
+      <% if policy(@vehicle).edit? %>
+      <%= link_to "Delete Vehicle", vehicle_path, method: :delete, class: "btn btn-primary image-responsive" %>
       <%= link_to "Edit Vehicle", edit_vehicle_path, class: "btn btn-primary" %>
-    <% end %>
+      <% end %>
+  </div>
 </div>
-
-

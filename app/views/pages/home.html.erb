@@ -7,18 +7,27 @@
       </form>
   </div>
 </div>
-<div class="container mt-5">
-  <h1>Featured Campervans</h1>
-  <ul>
-  <% @vehicles.each do |vehicle| %>
-    <%= cl_image_path vehicle.photo %>
-    <li> <%= vehicle.name %> </li>
-    <li><p> <%= vehicle.berths %> berth <%= vehicle.category %> </p> </li>
-    <li> <%= vehicle.address %> </li>
-    <li> <%= vehicle.price_per_night %> </li>
-    <li> <%= vehicle.category %> </li>
-    <li> <%= vehicle.name %> </li>
 
-  <% end %>
-  </ul>
+<div class="container">
+  <h1>Featured Campervans</h1>
+  <div class="row">
+    <% @vehicles.each do |vehicle| %>
+    <div class="col-4">
+      <div class="card-trip">
+        <%= cl_image_tag vehicle.photo, crop: :fill %>
+        <div class="m-3">
+          <h1 class="text-secondary"><%= vehicle.name %></h1>
+          <p>Berth: (<%= vehicle.berths %>) <%= vehicle.category %></p>
+        </div>
+
+        <div class="card-trip-infos">
+          <h3 class="card-trip-user btn btn-primary">
+            <span class="price-from">From</span><br>£<%= vehicle.price_per_night %> PN
+          </h3>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
+
