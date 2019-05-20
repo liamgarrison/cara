@@ -1,14 +1,15 @@
 <div class="container mt-5">
   <h1>Your Booking</h1>
-  <div class="vehicle-index-card mt-5 mb-3 w-100">
-        <%= cl_image_tag @booking.vehicle.photo, height: 300 %>
-        <div class="vehicle-index-card-content d-flex flex-column p-3">
-          <p class="vehicle-index-card-title mb-2"><%= @booking.vehicle.name %></p>
-          <p class="vehicle-index-card-subheading"><%= @booking.vehicle.berths %> berth <%= @booking.vehicle.category %></p>
-          <p class="vehicle-index-card-text flex-grow-1"><%= @booking.vehicle.description[0..140] %></p>
-          <p class="vehicle-index-card-text">On <%= @booking.start_date %> for <%= @booking.number_of_nights %> nights.</p>
-        </div>
+
+    <div class="vehicle-index-card mt-5 mb-3 w-100">
+      <%= cl_image_tag @booking.vehicle.photo, height: 300 %>
+      <div class="vehicle-index-card-content d-flex flex-column p-3">
+        <p class="vehicle-index-card-title mb-2"><%= @booking.vehicle.name %></p>
+        <p class="vehicle-index-card-subheading"><%= @booking.vehicle.berths %> berth <%= @booking.vehicle.category %></p>
+        <p class="vehicle-index-card-text flex-grow-1"><%= @booking.vehicle.description[0..140] %></p>
+        <p class="vehicle-index-card-text">On <%= @booking.start_date %> for <%= @booking.number_of_nights %> nights.</p>
       </div>
+    </div>
 
   <% if policy(@booking).edit? %>
     <%= link_to "Delete Booking", booking_path, method: :delete, class: "btn btn-primary" %>

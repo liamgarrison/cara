@@ -4,14 +4,16 @@
 
   <div class="cards-wrapper w-50 p-3">
     <% @my_bookings.each do |booking| %>
-      <div class="vehicle-index-card mb-3 w-100">
-        <%= cl_image_tag booking.vehicle.photo, height: 300 %>
-        <div class="vehicle-index-card-content d-flex flex-column p-3">
-          <p class="vehicle-index-card-title mb-2"><%= booking.vehicle.name %></p>
-          <p class="vehicle-index-card-subheading"><%= booking.vehicle.berths %> berth <%= booking.vehicle.category %></p>
-          <p class="vehicle-index-card-text flex-grow-1"><%= booking.vehicle.description[0..140] %></p>
+      <%= link_to booking_path(booking), class: 'text-decoration-none' do %>
+        <div class="vehicle-index-card mb-3 w-100">
+          <%= cl_image_tag booking.vehicle.photo, height: 300 %>
+          <div class="vehicle-index-card-content d-flex flex-column p-3">
+            <p class="vehicle-index-card-title mb-2"><%= booking.vehicle.name %></p>
+            <p class="vehicle-index-card-subheading"><%= booking.vehicle.berths %> berth <%= booking.vehicle.category %></p>
+            <p class="vehicle-index-card-text flex-grow-1"><%= booking.vehicle.description[0..140] %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 
