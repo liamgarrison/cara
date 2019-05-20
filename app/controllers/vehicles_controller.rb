@@ -2,25 +2,20 @@ class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+
   def index
     @search_term = params[:location]
-    if @search_term.nil? || @search_term == ""
-      if params[:user_id]
-        @vehicles = policy_scope(Vehicle).where(owner_id: params[:user_id])
-      else
-        @vehicles = policy_scope(Vehicle).all
-      end
+    if params[:user_id]
+      # Admin vehicles page
+      @vehicles = policy_scope(Vehicle).where(owner_id: params[:user_id])
+    elsif @search_term.nil? || @search_term == ""
+      # Show all vehicles if no search term
+      @vehicles = policy_scope(Vehicle).all
+      @markers = generate_markers(@vehicles)
     else
-      regex = Regexp.new(@search_term, "i")
-      # @vehicles = policy_scope(Vehicle).select { |vehicle| vehicle.address.match(regex) }
-      # @vehicles = Vehicle.where.not(latitude: nil, longitude: nil)
+      # Search vehicles page with location
       @vehicles = policy_scope(Vehicle).near(@search_term, 20)
-      @markers = @vehicles.map do |vehicle|
-      {
-        lat: vehicle.latitude,
-        lng: vehicle.longitude
-      }
-      end
+      @markers = generate_markers(@vehicles)
     end
   end
 
@@ -74,4 +69,9 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.find(params[:id])
   end
 
+  def generate_markers(vehicles)
+    vehicles.map do |vehicle|
+      { lat: vehicle.latitude, lng: vehicle.longitude }
+    end
+  end
 end
