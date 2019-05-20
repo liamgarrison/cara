@@ -2,8 +2,9 @@ import mapboxgl from 'mapbox-gl';
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
+  console.log(mapElement.dataset.markers);
+
   if (mapElement) { // only build a map if there's a div#map to inject into
-    console.log(mapElement.dataset.markers);
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
