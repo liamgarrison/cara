@@ -1,6 +1,6 @@
 <div class="container border-radius">
   <div class="top-image">
-    <%= cl_image_tag @vehicle.photo, crop: :fill %>
+    <%= cl_image_tag @vehicle.photo, crop: :fill, class: 'w-100' %>
   </div>
   <div class="content-container d-flex justify-content-between">
     <div class="details-container w-50">
@@ -12,7 +12,7 @@
         <p><i class="fas fa-map-marker-alt"></i> <%= @vehicle.address %></p>
         <div class="d-flex">
           <p><i class="fas fa-shuttle-van"></i> <%= @vehicle.category %> </p>
-          <p> <i class="fas fa-bed"></i> <%= @vehicle.berths %></p>
+          <p> <i class="ml-3 fas fa-bed"></i> <%= @vehicle.berths %></p>
         </div>
       </div>
       <div class="description">
@@ -33,7 +33,7 @@
           <div class="dates">
             <p> date picker </p>
           </div>
-          <button>Book</button>
+          <%= link_to "Book now", new_vehicle_booking_path(@vehicle), class: 'btn btn-primary w-100' %>
         </div>
       </div>
   </div>
