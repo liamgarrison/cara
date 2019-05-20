@@ -3,17 +3,18 @@ class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @search_term = params[:location]
+    # Call private method for search params
+    @search_params = search_params
     if params[:user_id]
       # Admin vehicles page
       @vehicles = policy_scope(Vehicle).where(owner_id: params[:user_id])
-    elsif @search_term.nil? || @search_term == ""
+    elsif @search_params[:location].nil? || @search_params[:location] == ""
       # Show all vehicles if no search term
       @vehicles = policy_scope(Vehicle).all
       @markers = generate_markers(@vehicles)
     else
       # Search vehicles page with location
-      @vehicles = policy_scope(Vehicle).near(@search_term, 20)
+      @vehicles = policy_scope(Vehicle).near(@search_params[:location], search_params[:distance])
       @markers = generate_markers(@vehicles)
     end
   end
@@ -62,6 +63,18 @@ class VehiclesController < ApplicationController
 
   def vehicle_params
     params.require(:vehicle).permit(:name, :berths, :address, :price_per_night, :category, :description, :photo)
+  end
+
+  def search_params
+    search_params = {}
+    search_params[:location] = params[:location]
+    search_params[:dates] = [params[:start_date], params[:end_date]]
+    search_params[:berths] = params[:berths]
+    search_params[:vehicle_type] = params["vehicle-type"]
+    search_params[:distance] = params[:distance]
+    search_params[:price_per_night] = params["price-per-night"]
+    search_params[:distance] = 100 if search_params[:distance].nil?
+    return search_params
   end
 
   def set_vehicle

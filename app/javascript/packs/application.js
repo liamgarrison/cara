@@ -6,5 +6,5 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { popoverInit } from './popovers'
 
-initMapbox();
 initAutocomplete();
+initMapbox();
