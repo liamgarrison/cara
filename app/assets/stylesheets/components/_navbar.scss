@@ -1,12 +1,26 @@
-.navbar-lewagon {
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
+
+.navbar-cara {
   justify-content: space-between;
-  background: white;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-brand {
+  font-family: 'Pacifico', cursive;
+  font-size: 40px;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
+// .nav-item .nav-link a {
+//   color: white !important;
+// }
+
+// #nblogo {
+//   color:white;
+// }
