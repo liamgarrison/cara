@@ -4,6 +4,8 @@
   border-radius: $border-radius;
   box-shadow: $box-shadow;
 }
+
+
 .vehicle-index-card img {
   height: 100%;
   width: 50%;
@@ -13,10 +15,10 @@
   border-bottom-left-radius: $border-radius;
 }
 
-
 .vehicle-index-card-title {
   font-weight: bold;
   font-size: 24px;
+  color: $gray;
 }
 
 .vehicle-index-card-subheading {
@@ -26,6 +28,7 @@
 
 .vehicle-index-card-text {
   font-size: 14px;
+  color: $gray;
 }
 
 .vehicle-index-card-address {
