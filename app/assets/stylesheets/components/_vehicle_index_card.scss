@@ -1,0 +1,35 @@
+.vehicle-index-card {
+  display: flex;
+  height: 250px;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}
+.vehicle-index-card img {
+  height: 100%;
+  width: 50%;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+}
+
+
+.vehicle-index-card-title {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.vehicle-index-card-subheading {
+  font-size: 14px;
+  color: $light-gray;
+}
+
+.vehicle-index-card-text {
+  font-size: 14px;
+}
+
+.vehicle-index-card-address {
+  font-size: 14px;
+  color: $light-gray;
+  text-align: right;
+}
