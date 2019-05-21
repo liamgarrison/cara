@@ -8,6 +8,8 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @review = Review.new
+    @reviews = Review.where(booking: @booking)
     authorize @booking
   end
 
