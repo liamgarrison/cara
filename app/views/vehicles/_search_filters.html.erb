@@ -80,7 +80,7 @@
       <div class="form-group">
         <label for="price_per_night">Enter Max Price Per Night:</label>
         <input type="hidden" name="price_per_night" id="price_per_night" value="<%= @search_params[:price_per_night] %>">
-        <div class="price-slider my-3" data-price-floor="<%= @vehicles.min_by { |vehicle| vehicle.price_per_night }.price_per_night %>" data-price-ceiling="<%= @vehicles.max_by { |vehicle| vehicle.price_per_night }.price_per_night %>"></div>
+        <div class="price-slider my-3"></div>
         <p class="price-slider-text text-center"></p>
       </div>
       <input class="form-control btn btn-primary mt-3" type="submit" value="Apply">

@@ -3,28 +3,20 @@ class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    # Call private method for search params
     @search_params = search_params
-    if params[:user_id]
-      # Admin vehicles page
-      @vehicles = policy_scope(Vehicle).where(owner_id: params[:user_id])
-    elsif @search_params[:location].nil? || @search_params[:location] == ""
-      # Show all vehicles if no search term
-      @vehicles = policy_scope(Vehicle).all
-      @markers = generate_markers(@vehicles)
-    else
-      # Search vehicles page with location
-      if search_params[:distance]
-        @vehicles = policy_scope(Vehicle).near(@search_params[:location], search_params[:distance])
-        # Calculate distance
-        @vehicles.each { |vehicle| vehicle[:distance] = vehicle.distance_to(@search_params[:location]).round }
-        # Sort by location
-        @vehicles = @vehicles.sort_by { |vehicle| vehicle[:distance] }
-      else
-        @vehicles = policy_scope(Vehicle)
-      end
-      @markers = generate_markers(@vehicles)
+    @vehicles = policy_scope(Vehicle).all
+
+    if @search_params[:location] && @search_params[:location] != "" && @search_params[:distance] && @search_params[:distance] != ""
+      # Filter by distance when location and distance presence
+      @vehicles = @vehicles.near(@search_params[:location], search_params[:distance])
+      @vehicles.each { |vehicle| vehicle[:distance] = vehicle.distance_to(@search_params[:location]).round }
+      @vehicles = @vehicles.sort_by { |vehicle| vehicle[:distance] }
     end
+
+    if @search_params[:price_per_night] && @search_params[:price_per_night] != ""
+      @vehicles = @vehicles.select { |vehicle| vehicle.price_per_night < @search_params[:price_per_night] }
+    end
+    @markers = generate_markers(@vehicles)
   end
 
   def show
@@ -82,7 +74,7 @@ class VehiclesController < ApplicationController
     search_params[:berths] = params[:berths]
     search_params[:vehicle_type] = params[:vehicle_type]
     search_params[:distance] = params[:distance]
-    search_params[:price_per_night] = params[:price_per_night]
+    search_params[:price_per_night] = params[:price_per_night].to_i
     search_params[:distance] = params[:distance]
     return search_params
   end
