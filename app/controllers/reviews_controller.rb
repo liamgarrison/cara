@@ -10,8 +10,8 @@ class ReviewsController < ApplicationController
     @review.vehicle = Vehicle.find(params[:vehicle_id])
     @review.user = current_user
     @review.save
-    redirect_to user_bookings_path(@review.user)
     authorize @review
+    redirect_to vehicle_path(@review.vehicle)
   end
 
   private
