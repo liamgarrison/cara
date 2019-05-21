@@ -3,25 +3,28 @@ class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    # Call private method for search params
     @search_params = search_params
-    if params[:user_id]
-      # Admin vehicles page
-      @vehicles = policy_scope(Vehicle).where(owner_id: params[:user_id])
-    elsif @search_params[:location].nil? || @search_params[:location] == ""
-      # Show all vehicles if no search term
-      @vehicles = policy_scope(Vehicle).all
-      @markers = generate_markers(@vehicles)
-    else
-      # Search vehicles page with location
+    @vehicles = policy_scope(Vehicle).all
 
-      @vehicles = policy_scope(Vehicle).near(@search_params[:location], search_params[:distance])
-      # Calculate distance
+    if @search_params[:location] && @search_params[:distance]
+      # Filter by distance when location and distance presence
+      @vehicles = @vehicles.near(@search_params[:location], search_params[:distance])
       @vehicles.each { |vehicle| vehicle[:distance] = vehicle.distance_to(@search_params[:location]).round }
-      # Sort by location
       @vehicles = @vehicles.sort_by { |vehicle| vehicle[:distance] }
-      @markers = generate_markers(@vehicles)
     end
+
+    if @search_params[:price_per_night]
+      @vehicles = @vehicles.select { |vehicle| vehicle.price_per_night < @search_params[:price_per_night] }
+    end
+
+    if @search_params[:berths]
+      @vehicles = @vehicles.select { |vehicle| vehicle.berths == @search_params[:berths] }
+    end
+
+    if @search_params[:category]
+      @vehicles = @vehicles.select { |vehicle| vehicle.category == @search_params[:category] }
+    end
+    @markers = generate_markers(@vehicles)
   end
 
   def show
@@ -73,14 +76,35 @@ class VehiclesController < ApplicationController
 
   def search_params
     search_params = {}
-    search_params[:location] = params[:location]
-    search_params[:start_date] = params[:start_date]
-    search_params[:end_date] = params[:end_date]
-    search_params[:berths] = params[:berths]
-    search_params[:vehicle_type] = params[:vehicle_type]
-    search_params[:distance] = params[:distance]
-    search_params[:price_per_night] = params[:price_per_night]
-    search_params[:distance] = params[:distance]
+
+    if params[:location] == "" || params[:location].nil? then search_params[:location] = nil
+    else search_params[:location] = params[:location]
+    end
+
+    if params[:start_date] == "" || params[:start_date].nil? then search_params[:start_date] = nil
+    else search_params[:start_date] = params[:start_date]
+    end
+
+    if params[:end_date] == "" || params[:end_date].nil? then search_params[:end_date] = nil
+    else search_params[:end_date] = params[:end_date]
+    end
+
+    if params[:berths] == "" || params[:berths].nil? then search_params[:berths] = nil
+    else search_params[:berths] = params[:berths].to_i
+    end
+
+    if params[:category] == "" || params[:category].nil? then search_params[:category] = nil
+    else search_params[:category] = params[:category]
+    end
+
+    if params[:distance] == "" || params[:distance].nil? then search_params[:distance] = nil
+    else search_params[:distance] = params[:distance].to_i
+    end
+
+    if params[:price_per_night] == "" || params[:price_per_night].nil? then search_params[:price_per_night] = nil
+    else search_params[:price_per_night] = params[:price_per_night].to_i
+    end
+
     return search_params
   end
 
