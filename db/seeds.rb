@@ -13,7 +13,8 @@ addresses = %w[glasgow edinburgh newcastle birmingham manchester leeds bristol s
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: 123456,
-    remote_photo_url: "https://kitt.lewagon.com/placeholder/users/liamgarrison"
+    remote_photo_url: "https://kitt.lewagon.com/placeholder/users/liamgarrison",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit adipisci accusantium, libero consectetur omnis, exercitationem rem dignissimos nemo, obcaecati esse ipsam veniam, laboriosam tenetur? Quae id magni harum quo odio!"
   })
 end
 
