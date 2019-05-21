@@ -8,6 +8,7 @@
         <p class="vehicle-index-card-subheading"><%= @booking.vehicle.berths %> berth <%= @booking.vehicle.category %></p>
         <p class="vehicle-index-card-text flex-grow-1"><%= @booking.vehicle.description[0..140] %></p>
         <p class="vehicle-index-card-text">On <%= @booking.start_date %> for <%= @booking.number_of_nights %> nights.</p>
+        <p class="vehicle-index-card-text">Total price: £<%= @booking.vehicle.price_per_night * @booking.number_of_nights %></p>
       </div>
     </div>
 
@@ -17,3 +18,4 @@
   <% end %>
 
 </div>
+
