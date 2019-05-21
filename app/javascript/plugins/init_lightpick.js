@@ -36,20 +36,4 @@ const lightpickInitVehicleShow = () => {
   }
 };
 
-
-// const lightpickInitVehicleShow = () => {
-//   const picker = new Lightpick({
-//     field: document.getElementById('start_date_show'),
-//     secondField: document.getElementById('end_date_show'),
-//     singleDate: false,
-//     selectForward: true,
-//     numberOfColumns: 1,
-//     numberOfMonths: 1,
-//     tooltipNights: true,
-//     minDate: new Date(),
-//     parentEl: '.popover-datepicker',
-//     hideOnBodyClick: true,
-//   });
-// };
-
 export { lightpickInitVehicleIndex, lightpickInitVehicleShow }
