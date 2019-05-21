@@ -6,13 +6,14 @@ const popoverInit =  () => {
   // Iterate through the buttons and add popvers
   searchFilterButtons.forEach((element, index) => {
     const thisPopover = searchFilterPopovers[index];
+    console.log(thisPopover)
     $(element).popover({
-      content: thisPopover,
+      content: () => thisPopover,
       html: true,
-      trigger: 'focus',
-      separator: '/',
-      container: element
+      trigger: 'click',
+      separator: '/'
     })
+    $(element).on( () => element.popover('hide'))
   })
 }
 
