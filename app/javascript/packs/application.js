@@ -9,4 +9,6 @@ import { lightpickInitVehicleIndex } from '../plugins/init_lightpick'
 
 initAutocomplete();
 initMapbox();
+
 lightpickInitVehicleIndex();
+popoverInit();

@@ -8,7 +8,10 @@ const lightpickInitVehicleIndex = () => {
     selectForward: true,
     inline:true,
     numberOfColumns: 2,
-    numberOfMonths: 2
+    numberOfMonths: 2,
+    tooltipNights: true,
+    minDate: new Date(),
+    parentEl: '.popover-datepicker'
   });
 };
 
