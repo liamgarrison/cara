@@ -6,8 +6,8 @@ const popoverInit =  $(() => {
   searchFilterButtons.forEach((element, index) => {
     const thisPopover = searchFilterPopovers[index];
     $(element).popover({
-      trigger: 'focus',
-      content: thisPopover
+      content: thisPopover,
+      html: true
     })
   })
 })

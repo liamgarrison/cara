@@ -1,14 +1,48 @@
 <div class="search-filter-buttons px-3 border-bottom">
-  <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Dates</button>
-  <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Berths</button>
-  <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Vehicle Type</button>
-  <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Distance</button>
-  <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Price Per Night</button>
+
+  <% if @search_params[:start_date] && @search_params[:end_date] %>
+    <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom"><%= @search_params[:start_date] %> - <%= @search_params[:end_date] %></button>
+  <% else %>
+    <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Dates</button>
+  <% end %>
+
+  <% if @search_params[:berths]%>
+    <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom"><%= @search_params[:berths] %> Berths</button>
+  <% else %>
+    <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Berths</button>
+  <% end %>
+
+  <% if @search_params[:vehicle_type] %>
+    <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom"><%= @search_params[:vehicle_type] %>s</button>
+  <% else %>
+    <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Vehicle Type</button>
+  <% end %>
+
+  <% if @search_params[:distance] %>
+    <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Up to <%= @search_params[:distance] %> miles</button>
+  <% else %>
+    <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Distance</button>
+  <% end %>
+
+  <% if @search_params[:price_per_night] %>
+    <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Up to £<%= @search_params[:price_per_night] %></button>
+  <% else %>
+    <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Price Per Night</button>
+  <% end %>
+
 </div>
 
 <div class="search-filter-popovers d-none">
   <div>
-    Select dates:
+    <form class="" action="/vehicles">
+      <div class="d-flex p-3 align-items-center">
+        <input type="hidden" type="text" name="start_date" id="start_date">
+        <input type="hidden" type="text" name="end_date" id="end_date">
+      </div>
+      <div class="popver-button-wrapper p-3">
+        <input class="form-control btn btn-primary" type="submit" value="Apply">
+      </div>
+    </form>
   </div>
   <div>
     Select berths:

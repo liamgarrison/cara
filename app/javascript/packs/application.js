@@ -5,6 +5,8 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { popoverInit } from './popovers'
+import { lightpickInitVehicleIndex } from '../plugins/init_lightpick'
 
 initAutocomplete();
 initMapbox();
+lightpickInitVehicleIndex();

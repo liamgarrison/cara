@@ -74,12 +74,13 @@ class VehiclesController < ApplicationController
   def search_params
     search_params = {}
     search_params[:location] = params[:location]
-    search_params[:dates] = [params[:start_date], params[:end_date]]
+    search_params[:start_date] = params[:start_date]
+    search_params[:end_date] = params[:end_date]
     search_params[:berths] = params[:berths]
-    search_params[:vehicle_type] = params["vehicle-type"]
+    search_params[:vehicle_type] = params[:vehicle_type]
     search_params[:distance] = params[:distance]
-    search_params[:price_per_night] = params["price-per-night"]
-    search_params[:distance] = 20 if search_params[:distance].nil?
+    search_params[:price_per_night] = params[:price_per_night]
+    search_params[:distance] = params[:distance]
     return search_params
   end
 
