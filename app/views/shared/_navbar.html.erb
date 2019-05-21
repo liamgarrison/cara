@@ -19,7 +19,7 @@
             <li class="nav-item dropdown">
               <%= cl_image_tag current_user.photo, class: "avatar nav-avatar ml-4 mr-3 dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to "My Profile", user_path(current_user) %>
+                <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
                 <%= link_to "Add Vehicle", new_user_vehicle_path(current_user), class: "dropdown-item" %>
                 <%= link_to "My Vehicles", user_vehicles_path(current_user), class: "dropdown-item" %>
                 <%= link_to "Manage Account", edit_user_registration_path(current_user), class: "dropdown-item" %>
