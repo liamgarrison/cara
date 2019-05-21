@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :vehicles, foreign_key: "owner_id", class_name: "Vehicle"
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :description, presence: true
 end
