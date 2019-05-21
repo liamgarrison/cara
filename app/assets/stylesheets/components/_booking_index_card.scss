@@ -1,8 +1,8 @@
-.booking-index-card-subheading {
-  font-size: 14px;
+.card {
+  box-shadow: $box-shadow;
+  border: $border;
 }
 
-.booking-index-card-text {
-  font-size: 14px;
+.booking-card-text {
   color: $light-gray;
 }
