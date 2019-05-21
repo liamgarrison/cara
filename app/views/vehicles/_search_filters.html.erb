@@ -12,16 +12,10 @@
     <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Berths</button>
   <% end %>
 
-  <% if @search_params[:vehicle_type] %>
-    <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom"><%= @search_params[:vehicle_type] %>s</button>
+  <% if @search_params[:category] %>
+    <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom"><%= @search_params[:category] %>s</button>
   <% else %>
-    <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Vehicle Type</button>
-  <% end %>
-
-  <% if @search_params[:distance] %>
-    <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Up to <%= @search_params[:distance] %> miles</button>
-  <% else %>
-    <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Distance</button>
+    <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Category</button>
   <% end %>
 
   <% if @search_params[:price_per_night] %>
@@ -30,30 +24,71 @@
     <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Price Per Night</button>
   <% end %>
 
+  <% if @search_params[:distance]  %>
+    <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Up to <%= @search_params[:distance] %> miles</button>
+  <% else %>
+    <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Distance</button>
+  <% end %>
+
 </div>
 
 <div class="search-filter-popovers d-none">
   <div>
     <form class="" action="/vehicles">
+      <%= render 'hidden_search_fields' %>
       <div class="popover-datepicker d-flex p-3 align-items-center">
-        <input type="hidden" type="text" name="start_date" id="start_date">
-        <input type="hidden" type="text" name="end_date" id="end_date">
+        <input type="hidden" type="text" name="start_date" id="start_date" value="<%= @search_params[:start_date] %>">
+        <input type="hidden" type="text" name="end_date" id="end_date" value="<%= @search_params[:end_date] %>">
       </div>
       <div class="popover-button-wrapper p-3">
         <input class="form-control btn btn-primary" type="submit" value="Apply">
       </div>
     </form>
   </div>
-  <div>
-    Select berths:
+  <div class="p-3">
+    <form class="" action="/vehicles">
+      <%= render 'hidden_search_fields' %>
+      <div class="form-group">
+        <label for="berths">Enter number of berths:</label>
+        <input class="form-control" type="number" name="berths" id="berths" value="<%= @search_params[:berths] %>">
+      </div>
+      <input class="form-control btn btn-primary mt-3" type="submit" value="Apply">
+    </form>
   </div>
-  <div>
-    Select vehicle type:
+  <div class="p-3">
+    <form class="" action="/vehicles">
+      <%= render 'hidden_search_fields' %>
+      <% ["Campervan", "Caravan", "Trailer Tent", "Motorhome"].each do |vehicle| %>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" value="<%= vehicle %>" id="<%= vehicle %>" name="category" <%= @search_params[:category] == vehicle ? "checked" : "" %>>
+          <label class="form-check-label" for="<%= vehicle %>">
+            <%= vehicle %>
+          </label>
+        </div>
+      <% end %>
+      <input class="form-control btn btn-primary mt-3" type="submit" value="Apply">
+    </form>
   </div>
-  <div>
-    Select distance:
+  <div class="p-3">
+    <form class="" action="/vehicles">
+      <%= render 'hidden_search_fields' %>
+      <div class="form-group">
+        <label for="price_per_night">Enter Max Price Per Night:</label>
+        <input type="hidden" name="price_per_night" id="price_per_night" value="<%= @search_params[:price_per_night] %>">
+        <div class="price-slider my-3"></div>
+        <p class="price-slider-text text-center"></p>
+      </div>
+      <input class="form-control btn btn-primary mt-3" type="submit" value="Apply">
+    </form>
   </div>
-  <div>
-    Select price per night:
+  <div class="p-3">
+    <form class="" action="/vehicles">
+      <%= render 'hidden_search_fields' %>
+      <div class="form-group">
+        <label for="distance">Enter distance:</label>
+        <input class="form-control" type="number" name="distance" id="distance" value="<%= @search_params[:distance] %>">
+      </div>
+      <input class="form-control btn btn-primary mt-3" type="submit" value="Apply">
+    </form>
   </div>
 </div>

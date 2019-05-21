@@ -6,10 +6,10 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    record.renter == user
   end
 
   def create?
-    true
+    new?
   end
 end
