@@ -1,4 +1,4 @@
-const popoverInit =  $(() => {
+const popoverInit =  () => {
   // Select buttons and popover divs
   const searchFilterButtons = document.querySelectorAll('.search-filter-buttons button');
   const searchFilterPopovers = document.querySelectorAll('.search-filter-popovers > div');
@@ -9,9 +9,11 @@ const popoverInit =  $(() => {
     $(element).popover({
       content: thisPopover,
       html: true,
-      trigger: 'focus'
+      trigger: 'focus',
+      separator: '/',
+      container: element
     })
   })
-})
+}
 
 export { popoverInit }

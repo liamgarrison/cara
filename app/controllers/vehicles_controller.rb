@@ -14,12 +14,15 @@ class VehiclesController < ApplicationController
       @markers = generate_markers(@vehicles)
     else
       # Search vehicles page with location
-
-      @vehicles = policy_scope(Vehicle).near(@search_params[:location], search_params[:distance])
-      # Calculate distance
-      @vehicles.each { |vehicle| vehicle[:distance] = vehicle.distance_to(@search_params[:location]).round }
-      # Sort by location
-      @vehicles = @vehicles.sort_by { |vehicle| vehicle[:distance] }
+      if search_params[:distance]
+        @vehicles = policy_scope(Vehicle).near(@search_params[:location], search_params[:distance])
+        # Calculate distance
+        @vehicles.each { |vehicle| vehicle[:distance] = vehicle.distance_to(@search_params[:location]).round }
+        # Sort by location
+        @vehicles = @vehicles.sort_by { |vehicle| vehicle[:distance] }
+      else
+        @vehicles = policy_scope(Vehicle)
+      end
       @markers = generate_markers(@vehicles)
     end
   end
