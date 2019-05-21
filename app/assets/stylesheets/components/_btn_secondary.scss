@@ -1,0 +1,16 @@
+.btn_secondary {
+  border: 1px solid $primary;
+  color: $primary;
+  a {
+    color: $primary;
+    padding: 6px 12px;
+  }
+}
+
+.btn_secondary:hover {
+  border-color: #254ee5;
+  a {
+    text-decoration: none;
+    color: #254ee5;
+  }
+}
