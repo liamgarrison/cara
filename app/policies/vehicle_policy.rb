@@ -20,5 +20,4 @@ class VehiclePolicy < ApplicationPolicy
     def destroy?
       record.owner == user
     end
-
 end

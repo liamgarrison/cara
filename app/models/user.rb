@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :bookings, foreign_key: "renter_id", class_name: "Booking"
   has_many :vehicles, foreign_key: "owner_id", class_name: "Vehicle"
+  has_many :reviews, dependent: :destroy
   validates :first_name, presence: true
   validates :last_name, presence: true
 end
