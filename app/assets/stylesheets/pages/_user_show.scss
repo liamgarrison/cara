@@ -1,0 +1,22 @@
+.profile-container {
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+}
+
+.public-container {
+  border-bottom: 1px solid $light-gray;
+  img {
+    border-radius: 50px;
+  }
+}
+
+.profile-table {
+  th {
+    text-align: right;
+    padding-right: 8px;
+  }
+}
+
+.profile-table-container {
+  padding-left: 108px;
+}
