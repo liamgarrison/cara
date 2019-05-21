@@ -12,8 +12,10 @@
       </div>
     </div>
 
+  <%= link_to "Add a review", new_vehicle_review_path(@booking.vehicle), class: "btn btn-primary" %>
+
   <% if policy(@booking).edit? %>
-    <%= link_to "Edit Booking", edit_vehicle_booking_path(@booking.vehicle) , class: "btn btn-primary" %>
+    <%= link_to "Edit Booking", edit_vehicle_booking_path(@booking.vehicle), class: "btn btn-primary" %>
     <%= link_to "Delete Booking", booking_path, method: :delete, class: "btn btn-success" %>
   <% end %>
 
