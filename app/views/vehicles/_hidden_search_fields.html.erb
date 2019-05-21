@@ -1,0 +1,5 @@
+<% @search_params.each do |key, value| %>
+  <% unless value.nil? || value == "" %>
+    <input type="hidden" name="<%= key %>" value="<%= value %>">
+  <% end %>
+<% end %>

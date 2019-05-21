@@ -6,7 +6,7 @@ const initSlider = () => {
   const priceSliderInput = document.querySelector('input#price_per_night');
 
   noUiSlider.create(slider, {
-    start: [Number.parseInt(priceSliderInput.value,10) || priceCeiling],
+    start: [Number.parseInt(priceSliderInput.value,10) || 200],
     step: 1,
     range: {
         'min': [0],

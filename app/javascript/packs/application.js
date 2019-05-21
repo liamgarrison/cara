@@ -9,8 +9,8 @@ import { lightpickInitVehicleIndex } from '../plugins/init_lightpick'
 import { initSlider } from '../plugins/init_slider'
 
 initAutocomplete();
-initMapbox();
 
 lightpickInitVehicleIndex();
 initSlider();
 popoverInit();
+initMapbox();
