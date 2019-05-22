@@ -2,17 +2,18 @@
 
   <h1>My bookings</h1>
 
-<% @my_bookings.each do |booking| %>
-  <div class="card m-3" style="width: 50%; height: 400px;">
-    <%= cl_image_tag booking.vehicle.photo, crop: :fill, :height=>200 %>
-    <div class="card-body">
-      <p class="card-text booking-card-text">From the <%= booking.start_date.to_s(:short) %> for <%= booking.number_of_nights %> nights</p>
-      <h5 class="card-title"> <%= booking.vehicle.name %> </h5>
-      <p class="card-text booking-card-text"> <%= booking.vehicle.berths %> berth <%= booking.vehicle.category %> </p>
-    </div>
-    <div class="card-body border-top w-">
-      <%= link_to "Booking Details", booking_path(booking) %>
-    </div>
+  <div class="cards-wrapper w-100 p-3">
+    <% @my_bookings.each do |booking| %>
+      <div class="vehicle-index-card mb-3 w-75">
+        <%= cl_image_tag booking.vehicle.photo, height: 300, width: 400 %>
+        <div class="vehicle-index-card-content d-flex flex-column p-3">
+          <p class="vehicle-index-card-title mb-2"><%= booking.vehicle.name %></p>
+          <p class="vehicle-index-card-subheading"><%= booking.vehicle.berths %> berth <%= booking.vehicle.category %></p>
+          <p class="vehicle-index-card-subheading">Total price: £<%= booking.vehicle.price_per_night * booking.number_of_nights %></p>
+          <p class="vehicle-index-card-text flex-grow-1"><%= booking.vehicle.description[0..140] %></p>
+        </div>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
