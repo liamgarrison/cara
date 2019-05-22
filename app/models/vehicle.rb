@@ -14,4 +14,9 @@ class Vehicle < ApplicationRecord
   validates :photo, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def average_rating
+    return 0 if reviews.count == 0
+    reviews.map(&:rating).sum / reviews.count
+  end
 end

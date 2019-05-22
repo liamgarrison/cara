@@ -31,7 +31,6 @@ class VehiclesController < ApplicationController
     authorize @vehicle
     @markers = [{ lat: @vehicle.latitude, lng: @vehicle.longitude }]
     @search_params = search_params
-
   end
 
   def new
@@ -69,6 +68,11 @@ class VehiclesController < ApplicationController
     redirect_to vehicles_path
     authorize @vehicle
   end
+
+  # def average(column_name)
+  #   calculate(:average, :reviews)
+  # end
+
 
   private
 
@@ -120,3 +124,5 @@ class VehiclesController < ApplicationController
     end
   end
 end
+
+

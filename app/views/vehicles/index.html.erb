@@ -22,6 +22,11 @@
                 <h2>£<%= vehicle.price_per_night %></h2>
                 <p>per night</p>
               </div>
+              <div class="vehicle-index-card-rating">
+                <% if vehicle.average_rating > 0 %>
+                  <span><%= ('<i class="fas fa-star"></i>' * vehicle.average_rating).html_safe %></span>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
