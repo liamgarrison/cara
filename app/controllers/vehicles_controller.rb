@@ -69,6 +69,11 @@ class VehiclesController < ApplicationController
     authorize @vehicle
   end
 
+  # def average(column_name)
+  #   calculate(:average, :reviews)
+  # end
+
+
   private
 
   def vehicle_params
@@ -119,3 +124,5 @@ class VehiclesController < ApplicationController
     end
   end
 end
+
+
