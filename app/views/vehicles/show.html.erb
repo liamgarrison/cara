@@ -5,7 +5,14 @@
     <div class="details-container w-50">
       <div class="title-container d-flex justify-content-between">
         <h1><%= @vehicle.name %></h1>
-          <%= cl_image_tag @vehicle.owner.photo, crop: :fill, height: 80, width: 80 %>
+          <div>
+            <%= link_to user_path(@vehicle.owner), class: 'text-decoration-none' do %>
+            <div>
+              <%= cl_image_tag @vehicle.owner.photo, crop: :fill, height: 80, width: 80 %>
+              <p class="text-center"><%= @vehicle.owner.first_name %></p>
+            </div>
+            <% end %>
+          </div>
       </div>
       <div class="vehicle-fields">
         <p><i class="fas fa-map-marker-alt"></i> <%= @vehicle.address %></p>
@@ -60,13 +67,6 @@
   </div>
     <% end %>
 </div>
-
-
-
-
-
-
-
 
 
 
