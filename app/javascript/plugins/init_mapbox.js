@@ -8,8 +8,9 @@ const initMapbox = () => {
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
-      zoom: 4,
-      scrollZoom: false
+      zoom: 6,
+      scrollZoom: false,
+      center: [0.1278, 51.5074]
     });
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {

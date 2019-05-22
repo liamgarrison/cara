@@ -1,6 +1,9 @@
 <%= render('search_filters') %>
 <div class="vehicles-index-wrapper">
   <div class="cards-wrapper w-50 p-3">
+    <% if @vehicles.empty? %>
+    <h2>Sorry, no results found!</h2>
+    <% end %>
     <% @vehicles.each do |vehicle| %>
       <%= link_to vehicle_path(vehicle), class: 'text-decoration-none' do %>
         <div class="vehicle-index-card mb-3 w-100">
@@ -9,7 +12,9 @@
             <p class="vehicle-index-card-title mb-2"><%= vehicle.name %></p>
             <p class="vehicle-index-card-subheading"><%= vehicle.berths %> berth <%= vehicle.category %></p>
             <p class="vehicle-index-card-text flex-grow-1"><%= vehicle.description[0..140] %></p>
-            <p class="vehicle-index-card-address mb-0"><i class="fas fa-map-marker-alt"></i> <%= vehicle[:distance] ? vehicle[:distance].round : 0 %> miles away</p>
+            <% if vehicle[:distance] %>
+              <p class="vehicle-index-card-address mb-0"><i class="fas fa-map-marker-alt mr-1"></i><%= vehicle[:distance].round %> miles away</p>
+            <% end %>
           </div>
         </div>
       <% end %>

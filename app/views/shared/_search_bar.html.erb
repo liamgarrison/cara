@@ -1,7 +1,8 @@
 <form class="form-inline flex-grow-1 mx-5" action="/vehicles">
   <div class="row w-100">
     <div class="col-10">
-      <input class="form-control w-100" type="text" name="location" placeholder="Enter a location..." id="vehicle_address">
+      <%= render 'hidden_search_fields' %>
+      <input class="form-control w-100" type="text" name="location" placeholder="Enter a location..." id="vehicle_address" value="<%= @search_params ? @search_params[:location] : "" %>">
     </div>
     <div class="col-2">
       <input class="form-control btn btn-light" type="submit" value="Search">
