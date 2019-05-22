@@ -1,14 +1,15 @@
 <div class="container">
   <h1 class="mt-5">Review and Confirm Your Booking</h1>
-  <div class ="confirm-container w-100 mt-5 mx-auto px-5 py-3">
-      <div class="vehicle-details-container d-flex py-4">
-        <%= cl_image_tag @vehicle.photo, height: 200, width: 200, crop: :fit %>
-      <div class="ml-3">
-        <h2><%= @vehicle.name %></h2>
-        <p><%= @vehicle.category %></p>
-        <p>Number of berths: <%= @vehicle.berths %></p>
-        <p><%= @vehicle.description %></p>
-      </div>
+  <div class ="confirm-container w-100 my-5 mx-auto px-5">
+      <div class="vehicle-details-container d-flex pt-5 pb-3">
+
+        <%= cl_image_tag @vehicle.photo %>
+        <div class="ml-3">
+          <h2><%= @vehicle.name %></h2>
+          <p><%= @vehicle.category %></p>
+          <p>Number of berths: <%= @vehicle.berths %></p>
+          <p><%= @vehicle.description %></p>
+        </div>
       </div>
 
       <div class="booking-details-container py-4">
