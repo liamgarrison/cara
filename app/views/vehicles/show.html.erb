@@ -15,10 +15,10 @@
           </div>
       </div>
       <div class="vehicle-fields">
-        <p><i class="fas fa-map-marker-alt"></i> <%= @vehicle.address %></p>
+        <p><i class="mr-1 fas fa-map-marker-alt"></i> <%= @vehicle.address.capitalize %></p>
         <div class="d-flex">
-          <p><i class="fas fa-shuttle-van"></i> <%= @vehicle.category %> </p>
-          <p> <i class="ml-3 fas fa-bed"></i> <%= @vehicle.berths %></p>
+          <p><i class="mr-1 fas fa-shuttle-van"></i> <%= @vehicle.category %> </p>
+          <p> <i class="ml-3 fas fa-bed"></i> <%= @vehicle.berths %> Berths</p>
         </div>
       </div>
       <div class="description">
