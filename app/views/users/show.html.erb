@@ -1,4 +1,36 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
+<div class="container">
+  <div class="profile-container col-9 mt-5 mx-auto p-5">
+    <div class="public-container pb-4">
+      <div class="name-container d-flex justify-content-between pb-4">
+        <h1><%= @user.first_name %></h1>
+        <%= link_to edit_user_registration_path(current_user) do %>
+          <h2><i class="fas fa-edit"></i></h2>
+        <% end %>
+      </div>
+      <div class="d-flex">
+        <%= cl_image_tag @user.photo, crop: :fill, height: 80, width: 80 %>
+        <div class="about ml-3 col">
+          <h2>About Me</h2>
+          <p><%= @user.description %></p>
+        </div>
+      </div>
+    </div>
+    <div class="profile-table-container my-4">
+      <table class="profile-table">
+        <tr>
+          <th><p><strong>First Name</strong></p></th>
+          <td><p><%= @user.first_name %></p></td>
+        </tr>
+        <tr>
+          <th><p><strong>Last Name</strong></p></th>
+          <td><p><%= @user.last_name %></p></td>
+        </tr>
+        <tr>
+          <th><p><strong>Email</strong></p></th>
+          <td><p><%= @user.email %></p></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 

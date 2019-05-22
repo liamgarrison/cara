@@ -2,6 +2,7 @@ class Vehicle < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   belongs_to :owner, class_name: "User"
   has_many :bookings
+  has_many :reviews, through: :bookings
   has_many :renters, through: :bookings, source: :renter
   validates :name, presence: true
   validates :berths, presence: true, numericality: { only_integer: true, greater_than: 0 }
