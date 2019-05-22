@@ -3,8 +3,15 @@
   </div>
   <div class="content-container d-flex justify-content-between">
     <div class="details-container w-50">
-      <div class="title-container d-flex justify-content-between">
-        <h1><%= @vehicle.name %></h1>
+      <div class="title-container d-flex justify-content-between align-items-center">
+          <div class="vehicle-fields">
+            <h1><%= @vehicle.name %></h1>
+            <p><i class="fas fa-map-marker-alt"></i> <%= @vehicle.address %></p>
+            <div class="d-flex">
+              <p><i class="fas fa-shuttle-van"></i> <%= @vehicle.category %> </p>
+              <p> <i class="ml-3 fas fa-bed"></i> <%= @vehicle.berths %></p>
+            </div>
+          </div>
           <div>
             <%= link_to user_path(@vehicle.owner), class: 'text-decoration-none' do %>
             <div>
@@ -14,6 +21,7 @@
             <% end %>
           </div>
       </div>
+      
       <div class="vehicle-fields">
         <p><i class="mr-1 fas fa-map-marker-alt"></i> <%= @vehicle.address.capitalize %></p>
         <div class="d-flex">
