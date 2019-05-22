@@ -1,23 +1,50 @@
-<div class="container mt-5">
-
-  <h1>Review and Confirm</h1>
-
-  <div class="cards-wrapper w-100 p-3">
-      <div class="vehicle-index-card mb-3 w-100">
-        <%= cl_image_tag @vehicle.photo, height: 400, width: 400 %>
-        <div class="vehicle-index-card-content d-flex flex-column p-3">
-          <p class="vehicle-index-card-title mb-2"> <%= @vehicle.name %></p>
-          <p class="vehicle-index-card-subheading"><strong>Dates:</strong> <%= Date.parse(params[:start_date]).strftime("%d %b") %> to <%= Date.parse(params[:end_date]).strftime("%d %b %Y") %> (<%= distance_of_time_in_words(params[:end_date],  params[:start_date]) %>)</p>
-          <p class="vehicle-index-card-subheading"><strong>Number of berths:</strong> <%= @vehicle.berths %></p>
-          <p class="vehicle-index-card-text-price"><strong>Total price:</strong> £<%= (params[:end_date].to_i - params[:start_date].to_i) * @vehicle.price_per_night %> (<%= params[:end_date].to_i - params[:start_date].to_i %> x £<%= @vehicle.price_per_night %>)</p>
-          <p class="vehicle-index-card-text flex-grow-1">Please pick-up <%= @vehicle.name %> from <%= @vehicle.address.capitalize %> on <%= Date.parse(params[:start_date]).strftime("%d %b %Y") %> between 14.00 and 16.00.</p>
-        </div>
+<div class="container">
+  <h1 class="mt-5">Review and Confirm Your Booking</h1>
+  <div class ="confirm-container w-100 mt-5 mx-auto px-5 py-3">
+      <div class="vehicle-details-container d-flex py-4">
+        <%= cl_image_tag @vehicle.photo, height: 200, width: 200, crop: :fit %>
+      <div class="ml-3">
+        <h2><%= @vehicle.name %></h2>
+        <p><%= @vehicle.category %></p>
+        <p>Number of berths: <%= @vehicle.berths %></p>
+        <p><%= @vehicle.description %></p>
       </div>
+      </div>
+
+      <div class="booking-details-container py-4">
+        <table class="booking-table">
+          <tr>
+            <th><p><strong>Dates</strong></p></th>
+            <td><p><%= Date.parse(params[:start_date]).strftime("%d %b") %> to <%= Date.parse(params[:end_date]).strftime("%d %b %Y") %> (<%= distance_of_time_in_words(params[:end_date],  params[:start_date]) %>)</p></td>
+          </tr>
+          <tr>
+            <th><p><strong>Pickup Details</strong></p></th>
+            <td><p>Please pick-up <%= @vehicle.name %> from <%= @vehicle.address.capitalize %> on <%= Date.parse(params[:start_date]).strftime("%d %b %Y") %> between 14.00 and 16.00.</p></td>
+          </tr>
+          <tr>
+            <th><p><strong>Total Price</strong></p></th>
+            <td><p class="vehicle-index-card-text-price"> £<%= (params[:end_date].to_i - params[:start_date].to_i) * @vehicle.price_per_night %> (<%= params[:end_date].to_i - params[:start_date].to_i %> x £<%= @vehicle.price_per_night %>)</p></td>
+          </tr>
+        </table>
+
+        <div class="d-flex justify-content-between w-100">
+          <%= link_to "Back", vehicle_path(@vehicle), class: "btn btn_secondary mt-3 ml-4"%>
           <%= simple_form_for([@vehicle, Booking.new]) do |f| %>
             <%= f.input :start_date, as: :hidden, input_html: { value: params[:start_date] } %>
             <%= f.input :number_of_nights, as: :hidden, input_html: { value: params[:end_date].to_i - params[:start_date].to_i } %>
-            <%= f.submit "Confirm now!", class: "btn btn-primary" %>
+            <%= f.submit "Confirm", class: "btn btn-primary" %>
           <% end %>
-          <%= link_to "Back", vehicle_path(@vehicle), class: "btn btn_secondary mt-2"%>
+        </div>
+
+      </div>
+
   </div>
+
+
+
+
+
+
+
+
 </div>
