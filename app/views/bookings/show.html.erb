@@ -13,9 +13,9 @@
     </div>
 
   <%#= link_to "Add a review", new_vehicle_review_path(@booking.vehicle), class: "btn btn-primary" %>
-  <!-- <h1>All reviews</h1>
+   <!-- <h1>All reviews</h1> -->
   <%# @reviews.each do |review| %>
-   <p><%#= review.comment %></p>
+   <!-- <p><%#= review.comment %></p> -->
   <%# end %>
   <%#= simple_form_for([@booking, @review]) do |f| %>
     <%#= f.input :rating %>
@@ -23,11 +23,10 @@
     <%#= f.submit "Add a review" %>
   <%# end %>
 
-  <%# if policy(@booking).edit? %>
-    <%#= link_to "Edit Booking", edit_vehicle_booking_path(@booking.vehicle, @booking), class: "btn btn-primary" %>
-    <%#= link_to "Delete Booking", booking_path(@booking), method: :delete, class: "btn btn-success" %>
-  <%# end %>
+  <% if policy(@booking).edit? %>
+
+    <%= link_to "Edit Booking", edit_vehicle_booking_path(@booking.vehicle) , class: "btn btn-primary" %>
+    <%= link_to "Delete Booking", booking_path, method: :delete, class: "btn btn_secondary m-0" %>
+  <% end %>
 
 </div>
-
- -->
