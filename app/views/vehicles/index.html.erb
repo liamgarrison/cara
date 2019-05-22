@@ -11,7 +11,7 @@
           <div class="position-relative d-flex flex-column p-3">
             <p class="vehicle-index-card-title mb-2"><%= vehicle.name %></p>
             <p class="vehicle-index-card-subheading"><%= vehicle.berths %> berth <%= vehicle.category %></p>
-            <p class="vehicle-index-card-text flex-grow-1"><%= vehicle.description[0..80] %></p>
+            <p class="vehicle-index-card-text flex-grow-1"><%= vehicle.description[0..80] %>...</p>
             <div class="d-flex">
               <p class="vehicle-index-card-address mb-0 flex-grow-1">
                 <% if vehicle[:distance] %>
