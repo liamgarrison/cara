@@ -24,10 +24,12 @@
     <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Price Per Night</button>
   <% end %>
 
-  <% if @search_params[:distance]  %>
+  <% if @search_params[:distance] && @search_params[:location] %>
     <button type="button" class="btn btn-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Up to <%= @search_params[:distance] %> miles</button>
-  <% else %>
+  <% elsif @search_params[:location] %>
     <button type="button" class="btn btn-outline-primary mr-2" data-container="body" data-toggle="popover" data-placement="bottom">Distance</button>
+  <% else %>
+    <button class="d-none"></button>
   <% end %>
 
 </div>
