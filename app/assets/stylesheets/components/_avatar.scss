@@ -1,8 +1,7 @@
 .avatar {
-  background-image: asset_url('profile.svg');
-  background-color: white;
+  background-color: $light-gray;
   border-radius: 50%;
-  object-fit: scale-down;
+  object-fit: cover;
   height: 40px;
   width: 40px;
 }
