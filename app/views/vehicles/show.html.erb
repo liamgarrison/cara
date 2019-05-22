@@ -6,7 +6,7 @@
     <div class="details-container w-50">
       <div class="title-container d-flex justify-content-between">
         <h1><%= @vehicle.name %></h1>
-          <%= cl_image_tag @vehicle.owner.photo, crop: :fill, height: 80, width: 80 %>
+          <%= cl_image_tag @vehicle.owner.photo, crop: :fill, height: 60, width: 60 %>
       </div>
       <div class="vehicle-fields">
         <p><i class="fas fa-map-marker-alt"></i> <%= @vehicle.address %></p>
@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="description">
-        <!-- <p><%= @vehicle.description %></p> -->
+        <p><%= @vehicle.description %></p>
       </div>
       <h2 class="mb-5">Location</h2>
       <div
@@ -36,8 +36,8 @@
           <div>
             <form class="popover-datepicker" action="<%=new_vehicle_booking_path(@vehicle)%>" >
               <div class="row">
-                <div class="col-6"><input class="w-100 form-control" type="text" name="start_date" id="start_date_show"></div>
-                <div class="col-6"><input class="w-100 form-control" type="text" name="end_date" id="end_date_show"></div>
+                <div class="col-6"><input class="w-100 form-control" type="text" name="start_date" id="start_date_show" placeholder="Start date"></div>
+                <div class="col-6"><input class="w-100 form-control" type="text" name="end_date" id="end_date_show" placeholder="End date"></div>
               </div>
               <input class="form-control btn btn-primary mt-3" type="submit" value="Book Now">
             </form>
@@ -47,29 +47,3 @@
       </div>
   </div>
 </div>
-
-<div class="container">
-  <h1>Reviews</h1>
-    <% @vehicle.reviews.each do |review| %>
-  <div class="card-product review-card my-3">
-    <%= cl_image_tag review.user.photo, height: 300, width: 400, crop: :thumb, class: "avatar m-3" %>
-    <strong><%= review.user.first_name %></strong>
-    <%= ('<i class="fas fa-star star-color"></i>' * review.rating).html_safe %>
-    <div class="card-product-infos p-3">
-      <%= review.comment %>
-    </div>
-  </div>
-    <% end %>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
