@@ -1,6 +1,10 @@
 .top-image {
   margin: 32px 0px;
   border-radius: $border-radius;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .content-container {
