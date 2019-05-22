@@ -24,8 +24,9 @@
   <% end %>
 
   <% if policy(@booking).edit? %>
-    <%= link_to "Edit Booking", edit_vehicle_booking_path(@booking.vehicle, @booking), class: "btn btn-primary" %>
-    <%= link_to "Delete Booking", booking_path(@booking), method: :delete, class: "btn btn-success" %>
+
+    <%= link_to "Edit Booking", edit_vehicle_booking_path(@booking.vehicle) , class: "btn btn-primary" %>
+    <%= link_to "Delete Booking", booking_path, method: :delete, class: "btn btn_secondary" %>
   <% end %>
 
 </div>
