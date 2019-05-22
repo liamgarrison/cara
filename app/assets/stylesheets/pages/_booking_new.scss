@@ -1,0 +1,22 @@
+.confirm-container {
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}
+
+.vehicle-details-container {
+  border-bottom: 1px solid $light-gray;
+  img {
+    border-radius: 50%;
+    padding: 8px;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.booking-table {
+  th {
+    text-align: right;
+    padding-right: 8px;
+  }
+}
