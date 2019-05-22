@@ -50,7 +50,12 @@
       <%= render 'hidden_search_fields' %>
       <div class="form-group">
         <label for="berths">Enter number of berths:</label>
-        <input class="form-control" type="number" name="berths" id="berths" value="<%= @search_params[:berths] %>">
+        <div class="input-group">
+          <input class="form-control" type="number" name="berths" id="berths" value="<%= @search_params[:berths] %>"  placeholder="e.g. 4">
+          <div class="input-group-append">
+              <span class="input-group-text"> berths </span>
+          </div>
+        </div>
       </div>
       <input class="form-control btn btn-primary mt-3" type="submit" value="Apply">
     </form>
@@ -73,7 +78,7 @@
     <form class="" action="/vehicles">
       <%= render 'hidden_search_fields' %>
       <div class="form-group">
-        <label for="price_per_night">Enter Max Price Per Night:</label>
+        <label for="price_per_night">Enter your max price:</label>
         <input type="hidden" name="price_per_night" id="price_per_night" value="<%= @search_params[:price_per_night] %>">
         <div class="price-slider my-3"></div>
         <p class="price-slider-text text-center"></p>
@@ -85,8 +90,13 @@
     <form class="" action="/vehicles">
       <%= render 'hidden_search_fields' %>
       <div class="form-group">
-        <label for="distance">Enter distance:</label>
-        <input class="form-control" type="number" name="distance" id="distance" value="<%= @search_params[:distance] %>">
+        <label for="distance">Enter max distance:</label>
+        <div class="input-group">
+          <input class="form-control" type="number" name="distance" id="distance" value="<%= @search_params[:distance] %>" placeholder="e.g. 10">
+          <div class="input-group-append">
+              <span class="input-group-text"> miles </span>
+          </div>
+        </div>
       </div>
       <input class="form-control btn btn-primary mt-3" type="submit" value="Apply">
     </form>
