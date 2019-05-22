@@ -14,8 +14,12 @@ const initMapbox = () => {
     });
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
-      new mapboxgl.Marker()
+      const el = document.createElement('i')
+      el.className = 'fas fa-map-marker-alt marker'
+      new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+        .setHTML('<h3 class="mt-3 mx-2 font-weight-bold">' + marker.name + '</h3><p class="mx-2">£' + marker.price_per_night + ' per night</p>'))
         .addTo(map);
       });
     const fitMapToMarkers = (map, markers) => {

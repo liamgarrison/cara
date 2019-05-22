@@ -1,0 +1,11 @@
+.marker {
+  font-size: 32px;
+  color: $primary;
+  cursor: pointer;
+  text-shadow: $box-shadow;
+}
+
+
+.mapboxgl-popup {
+  max-width: 200px;
+}

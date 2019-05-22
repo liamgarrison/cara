@@ -120,7 +120,12 @@ class VehiclesController < ApplicationController
 
   def generate_markers(vehicles)
     vehicles.map do |vehicle|
-      { lat: vehicle.latitude, lng: vehicle.longitude }
+      {
+        lat: vehicle.latitude,
+        lng: vehicle.longitude,
+        name: vehicle.name,
+        price_per_night: vehicle.price_per_night
+      }
     end
   end
 end
