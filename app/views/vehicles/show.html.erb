@@ -1,4 +1,4 @@
-<div class="container border-radius">
+<div class="container border-radius mb-5">
   <div class="top-image" style="background-image: url(<%= cl_image_path @vehicle.photo, crop: :mpad %>)">
   </div>
   <div class="content-container d-flex justify-content-between">
@@ -52,19 +52,19 @@
         </div>
       </div>
   </div>
-</div>
 
-<div class="container">
-    <h2><%= @vehicle.reviews.count %> Reviews <% @vehicle.average_rating.times do  %>
-    <i class="fas fa-star star-color"></i>
-  <% end %>
-  </h2>
+    <h2 class="mb-4"><%= pluralize @vehicle.reviews.count, "Review" %>
+      <span class="review-stars"><% @vehicle.average_rating.times do  %>
+        <i class="fas fa-star star-color"></i>
+      <% end %>
+      </span>
+    </h2>
     <% @vehicle.reviews.each do |review| %>
-  <div class="card-product review-card my-3">
-    <%= cl_image_tag review.user.photo, height: 300, width: 400, crop: :thumb, class: "avatar m-3" %>
+  <div class="card-product review-card my-3 p-4">
+    <%= cl_image_tag review.user.photo, class: "avatar m-3" %>
     <strong><%= review.user.first_name %></strong>
     <%= ('<i class="fas fa-star star-color"></i>' * review.rating).html_safe %>
-    <div class="card-product-infos p-3">
+    <div class="card-product-infos">
       <%= review.comment %>
     </div>
   </div>
