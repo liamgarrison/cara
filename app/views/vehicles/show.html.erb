@@ -1,12 +1,18 @@
-<div class="container border-radius">
-  <div class="top-image">
-    <%= cl_image_tag @vehicle.photo, crop: :fill, class: 'w-100' %>
+<div class="container border-radius mb-5">
+  <div class="top-image" style="background-image: url(<%= cl_image_path @vehicle.photo, crop: :mpad %>)">
   </div>
   <div class="content-container d-flex justify-content-between">
     <div class="details-container w-50">
       <div class="title-container d-flex justify-content-between">
         <h1><%= @vehicle.name %></h1>
-          <%= cl_image_tag @vehicle.owner.photo, crop: :fill, height: 60, width: 60 %>
+          <div>
+            <%= link_to user_path(@vehicle.owner), class: 'text-decoration-none' do %>
+            <div>
+              <%= cl_image_tag @vehicle.owner.photo, crop: :fill, height: 80, width: 80 %>
+              <p class="text-center"><%= @vehicle.owner.first_name %></p>
+            </div>
+            <% end %>
+          </div>
       </div>
       <div class="vehicle-fields">
         <p><i class="fas fa-map-marker-alt"></i> <%= @vehicle.address %></p>
@@ -46,4 +52,21 @@
         </div>
       </div>
   </div>
+
+    <h2 class="mb-4"><%= pluralize @vehicle.reviews.count, "Review" %>
+      <span class="review-stars"><% @vehicle.average_rating.times do  %>
+        <i class="fas fa-star star-color"></i>
+      <% end %>
+      </span>
+    </h2>
+    <% @vehicle.reviews.each do |review| %>
+  <div class="card-product review-card my-3 p-4">
+    <%= cl_image_tag review.user.photo, class: "avatar m-3" %>
+    <strong><%= review.user.first_name %></strong>
+    <%= ('<i class="fas fa-star star-color"></i>' * review.rating).html_safe %>
+    <div class="card-product-infos">
+      <%= review.comment %>
+    </div>
+  </div>
+    <% end %>
 </div>
