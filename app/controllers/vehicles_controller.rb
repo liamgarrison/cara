@@ -31,7 +31,6 @@ class VehiclesController < ApplicationController
     authorize @vehicle
     @markers = [{ lat: @vehicle.latitude, lng: @vehicle.longitude }]
     @search_params = search_params
-    reviews = @vehicle.reviews
   end
 
   def new
